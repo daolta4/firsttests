@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="84f5280d-5daf-4c3a-ba5f-d92c0cac606b" name="@hah 2026-07-21 23:15:36" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-07-21T23:15:36.2579900+07:00" queuing="2026-07-21T23:15:36.2579900+07:00" start="2026-07-21T23:15:31.8775390+07:00" finish="2026-07-21T23:15:59.8697280+07:00" />
+  <TestSettings name="default" id="34db474a-e8c3-4dbb-be20-ba6011f713f6">
+    <Deployment runDeploymentRoot="_hah_2026-07-21_23_15_36" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="56527b85-0573-4894-b366-07db2c56c811" testId="c574c5fd-0544-612e-b2fa-5fec57f63d03" testName="DangNhap_NhieuTaiKhoan(&quot;standard_user&quot;,&quot;secret_sauce&quot;,True)" computerName="hah" duration="00:00:02.6126050" startTime="2026-07-21T23:15:36.4013370+07:00" endTime="2026-07-21T23:15:39.0139450+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="56527b85-0573-4894-b366-07db2c56c811" />
+    <UnitTestResult executionId="85a4f540-b18f-4fcb-96aa-06b17a9fe680" testId="79026e7f-23f4-9aaa-fbcb-e1e875cddc47" testName="DangNhap_05_standard_user" computerName="hah" duration="00:00:05.2061460" startTime="2026-07-21T23:15:49.3682950+07:00" endTime="2026-07-21T23:15:54.5744480+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="85a4f540-b18f-4fcb-96aa-06b17a9fe680" />
+    <UnitTestResult executionId="6a917424-7243-4106-a03e-fd60da3fa117" testId="db9340c2-5fb2-5547-d3b7-d23bb4012df0" testName="DangNhap_NhieuTaiKhoan(&quot;locked_out_user&quot;,&quot;secret_sauce&quot;,False)" computerName="hah" duration="00:00:05.0758510" startTime="2026-07-21T23:15:39.0140000+07:00" endTime="2026-07-21T23:15:44.0898580+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6a917424-7243-4106-a03e-fd60da3fa117" />
+    <UnitTestResult executionId="036962d8-b61e-41a5-8e29-f980eb484976" testId="17659672-c03b-e826-e0a4-006ebc1da07c" testName="DangNhap_04_trong" computerName="hah" duration="00:00:05.5574640" startTime="2026-07-21T23:15:43.8107940+07:00" endTime="2026-07-21T23:15:49.3682660+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="036962d8-b61e-41a5-8e29-f980eb484976" />
+    <UnitTestResult executionId="2477885a-59d8-4a49-a2a9-188cfc4da69f" testId="5f8a10a7-d1d3-14d4-97bb-5e2aa918caaa" testName="DangNhap_NhieuTaiKhoan(&quot;khong_ton_tai&quot;,&quot;sai_mat_khau&quot;,True)" computerName="hah" duration="00:00:05.3655419" startTime="2026-07-21T23:15:46.5059380+07:00" endTime="2026-07-21T23:15:51.8714870+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2477885a-59d8-4a49-a2a9-188cfc4da69f">
+      <Output>
+        <ErrorInfo>
+          <Message>  Assert.That(trangSP.DaHienThi(), Is.EqualTo(mongDoiThanhCong))
+  Expected: True
+  But was:  False
+</Message>
+          <StackTrace>   at FirstTests.Tests.LoginTests.DangNhap_NhieuTaiKhoan(String tk, String mk, Boolean mongDoiThanhCong) in /Users/venom/projects/teaching/net/FirstTests/Tests/LoginTests.cs:line 36
+   at InvokeStub_LoginTests.DangNhap_NhieuTaiKhoan(Object, Span`1)
+
+1)    at FirstTests.Tests.LoginTests.DangNhap_NhieuTaiKhoan(String tk, String mk, Boolean mongDoiThanhCong) in /Users/venom/projects/teaching/net/FirstTests/Tests/LoginTests.cs:line 36
+   at InvokeStub_LoginTests.DangNhap_NhieuTaiKhoan(Object, Span`1)
+
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+      <ResultFiles>
+        <ResultFile path="hah/DangNhap_NhieuTaiKhoan(&quot;khong_ton_tai&quot;,&quot;sai_mat_khau&quot;,True)_231551.png" />
+      </ResultFiles>
+    </UnitTestResult>
+    <UnitTestResult executionId="abb5191d-6eac-4fbc-a2c1-711ca46b0da5" testId="6e0c69d5-9e52-44d8-7cfd-66edc4e6c9a1" testName="DangNhap_02_locked_out_user" computerName="hah" duration="00:00:05.6543089" startTime="2026-07-21T23:15:36.1934160+07:00" endTime="2026-07-21T23:15:41.8477320+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="abb5191d-6eac-4fbc-a2c1-711ca46b0da5" />
+    <UnitTestResult executionId="56bdbaf6-0c9c-44d4-a075-e8d5afb8532b" testId="6a7f643b-9097-697b-616d-62c756ace7e7" testName="DangNhap_DungTaiKhoan_ThanhCong" computerName="hah" duration="00:00:04.1502340" startTime="2026-07-21T23:15:32.2509950+07:00" endTime="2026-07-21T23:15:36.4012350+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="56bdbaf6-0c9c-44d4-a075-e8d5afb8532b" />
+    <UnitTestResult executionId="5087167e-5811-41c9-80d7-05ae0ee07204" testId="90801ede-b181-a873-ca07-40a920314330" testName="DangNhap_06_khong_ton_tai" computerName="hah" duration="00:00:05.2539960" startTime="2026-07-21T23:15:54.5744800+07:00" endTime="2026-07-21T23:15:59.8284830+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5087167e-5811-41c9-80d7-05ae0ee07204" />
+    <UnitTestResult executionId="7a9a8245-70ff-4045-af94-eaa8a2011fd4" testId="db30b674-2265-cc0d-133f-dc36e7385698" testName="DangNhap_03_problem_user" computerName="hah" duration="00:00:01.9629600" startTime="2026-07-21T23:15:41.8477720+07:00" endTime="2026-07-21T23:15:43.8107340+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7a9a8245-70ff-4045-af94-eaa8a2011fd4" />
+    <UnitTestResult executionId="5dc734b7-2f02-454e-bc5f-f3757c855a7c" testId="e353fcad-5bc6-ad2d-c123-49a60e8554bc" testName="DangNhap_01_standard_user" computerName="hah" duration="00:00:03.9416820" startTime="2026-07-21T23:15:32.2510440+07:00" endTime="2026-07-21T23:15:36.1926960+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5dc734b7-2f02-454e-bc5f-f3757c855a7c" />
+    <UnitTestResult executionId="2f3415e3-aad8-49a2-bc61-881adf8283f0" testId="b93d7b65-4abc-42bd-4e34-47e7fc3fc653" testName="DangNhap_TaiKhoanBiKhoa_HienLoi" computerName="hah" duration="00:00:02.3822350" startTime="2026-07-21T23:15:51.8728430+07:00" endTime="2026-07-21T23:15:54.2550810+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2f3415e3-aad8-49a2-bc61-881adf8283f0" />
+    <UnitTestResult executionId="16b7a253-1876-4077-9499-1a87c9b4cb30" testId="ef566082-2536-3ec1-1752-36d8db9f406e" testName="DangNhap_NhieuTaiKhoan(&quot;problem_user&quot;,&quot;secret_sauce&quot;,True)" computerName="hah" duration="00:00:02.4159920" startTime="2026-07-21T23:15:44.0899050+07:00" endTime="2026-07-21T23:15:46.5059000+07:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="16b7a253-1876-4077-9499-1a87c9b4cb30" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="DangNhap_NhieuTaiKhoan(&quot;locked_out_user&quot;,&quot;secret_sauce&quot;,False)" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="db9340c2-5fb2-5547-d3b7-d23bb4012df0">
+      <Execution id="6a917424-7243-4106-a03e-fd60da3fa117" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LoginTests" name="DangNhap_NhieuTaiKhoan(&quot;locked_out_user&quot;,&quot;secret_sauce&quot;,False)" />
+    </UnitTest>
+    <UnitTest name="DangNhap_NhieuTaiKhoan(&quot;khong_ton_tai&quot;,&quot;sai_mat_khau&quot;,True)" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="5f8a10a7-d1d3-14d4-97bb-5e2aa918caaa">
+      <Execution id="2477885a-59d8-4a49-a2a9-188cfc4da69f" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LoginTests" name="DangNhap_NhieuTaiKhoan(&quot;khong_ton_tai&quot;,&quot;sai_mat_khau&quot;,True)" />
+    </UnitTest>
+    <UnitTest name="DangNhap_02_locked_out_user" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="6e0c69d5-9e52-44d8-7cfd-66edc4e6c9a1">
+      <Execution id="abb5191d-6eac-4fbc-a2c1-711ca46b0da5" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.DataDrivenLoginTests" name="DangNhap_02_locked_out_user" />
+    </UnitTest>
+    <UnitTest name="DangNhap_01_standard_user" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="e353fcad-5bc6-ad2d-c123-49a60e8554bc">
+      <Execution id="5dc734b7-2f02-454e-bc5f-f3757c855a7c" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.DataDrivenLoginTests" name="DangNhap_01_standard_user" />
+    </UnitTest>
+    <UnitTest name="DangNhap_06_khong_ton_tai" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="90801ede-b181-a873-ca07-40a920314330">
+      <Execution id="5087167e-5811-41c9-80d7-05ae0ee07204" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.DataDrivenLoginTests" name="DangNhap_06_khong_ton_tai" />
+    </UnitTest>
+    <UnitTest name="DangNhap_04_trong" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="17659672-c03b-e826-e0a4-006ebc1da07c">
+      <Execution id="036962d8-b61e-41a5-8e29-f980eb484976" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.DataDrivenLoginTests" name="DangNhap_04_trong" />
+    </UnitTest>
+    <UnitTest name="DangNhap_DungTaiKhoan_ThanhCong" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="6a7f643b-9097-697b-616d-62c756ace7e7">
+      <Execution id="56bdbaf6-0c9c-44d4-a075-e8d5afb8532b" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LoginTests" name="DangNhap_DungTaiKhoan_ThanhCong" />
+    </UnitTest>
+    <UnitTest name="DangNhap_TaiKhoanBiKhoa_HienLoi" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="b93d7b65-4abc-42bd-4e34-47e7fc3fc653">
+      <Execution id="2f3415e3-aad8-49a2-bc61-881adf8283f0" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LoginTests" name="DangNhap_TaiKhoanBiKhoa_HienLoi" />
+    </UnitTest>
+    <UnitTest name="DangNhap_NhieuTaiKhoan(&quot;problem_user&quot;,&quot;secret_sauce&quot;,True)" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="ef566082-2536-3ec1-1752-36d8db9f406e">
+      <Execution id="16b7a253-1876-4077-9499-1a87c9b4cb30" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LoginTests" name="DangNhap_NhieuTaiKhoan(&quot;problem_user&quot;,&quot;secret_sauce&quot;,True)" />
+    </UnitTest>
+    <UnitTest name="DangNhap_03_problem_user" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="db30b674-2265-cc0d-133f-dc36e7385698">
+      <Execution id="7a9a8245-70ff-4045-af94-eaa8a2011fd4" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.DataDrivenLoginTests" name="DangNhap_03_problem_user" />
+    </UnitTest>
+    <UnitTest name="DangNhap_05_standard_user" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="79026e7f-23f4-9aaa-fbcb-e1e875cddc47">
+      <Execution id="85a4f540-b18f-4fcb-96aa-06b17a9fe680" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.DataDrivenLoginTests" name="DangNhap_05_standard_user" />
+    </UnitTest>
+    <UnitTest name="DangNhap_NhieuTaiKhoan(&quot;standard_user&quot;,&quot;secret_sauce&quot;,True)" storage="/users/venom/projects/teaching/net/firsttests/bin/debug/net10.0/firsttests.dll" id="c574c5fd-0544-612e-b2fa-5fec57f63d03">
+      <Execution id="56527b85-0573-4894-b366-07db2c56c811" />
+      <TestMethod codeBase="/Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll" adapterTypeName="executor://nunit3testexecutor/" className="FirstTests.Tests.LoginTests" name="DangNhap_NhieuTaiKhoan(&quot;standard_user&quot;,&quot;secret_sauce&quot;,True)" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="c574c5fd-0544-612e-b2fa-5fec57f63d03" executionId="56527b85-0573-4894-b366-07db2c56c811" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="79026e7f-23f4-9aaa-fbcb-e1e875cddc47" executionId="85a4f540-b18f-4fcb-96aa-06b17a9fe680" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db9340c2-5fb2-5547-d3b7-d23bb4012df0" executionId="6a917424-7243-4106-a03e-fd60da3fa117" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="17659672-c03b-e826-e0a4-006ebc1da07c" executionId="036962d8-b61e-41a5-8e29-f980eb484976" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5f8a10a7-d1d3-14d4-97bb-5e2aa918caaa" executionId="2477885a-59d8-4a49-a2a9-188cfc4da69f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6e0c69d5-9e52-44d8-7cfd-66edc4e6c9a1" executionId="abb5191d-6eac-4fbc-a2c1-711ca46b0da5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a7f643b-9097-697b-616d-62c756ace7e7" executionId="56bdbaf6-0c9c-44d4-a075-e8d5afb8532b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="90801ede-b181-a873-ca07-40a920314330" executionId="5087167e-5811-41c9-80d7-05ae0ee07204" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="db30b674-2265-cc0d-133f-dc36e7385698" executionId="7a9a8245-70ff-4045-af94-eaa8a2011fd4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e353fcad-5bc6-ad2d-c123-49a60e8554bc" executionId="5dc734b7-2f02-454e-bc5f-f3757c855a7c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b93d7b65-4abc-42bd-4e34-47e7fc3fc653" executionId="2f3415e3-aad8-49a2-bc61-881adf8283f0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ef566082-2536-3ec1-1752-36d8db9f406e" executionId="16b7a253-1876-4077-9499-1a87c9b4cb30" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="12" executed="12" passed="11" failed="1" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>NUnit Adapter 5.0.0.0: Test execution started
+Running all tests in /Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/FirstTests.dll
+   NUnit3TestExecutor discovered 12 of 12 NUnit test cases using Current Discovery mode, Non-Explicit run
+[23:15:32] [INFO]  ===== BẮT ĐẦU: DangNhap_DungTaiKhoan_ThanhCong =====
+[23:15:32] [INFO]  ===== BẮT ĐẦU: DangNhap_01_standard_user =====
+[23:15:35] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:35] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:36] [INFO]  XONG: OK
+[23:15:36] [INFO]  ===== BẮT ĐẦU: DangNhap_02_locked_out_user =====
+[23:15:36] [INFO]  XONG: OK
+[23:15:36] [INFO]  ===== BẮT ĐẦU: DangNhap_NhieuTaiKhoan("standard_user","secret_sauce",True) =====
+[23:15:37] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:37] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:38] [INFO]  XONG: OK
+[23:15:39] [INFO]  ===== BẮT ĐẦU: DangNhap_NhieuTaiKhoan("locked_out_user","secret_sauce",False) =====
+[23:15:40] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:41] [INFO]  XONG: OK
+[23:15:41] [INFO]  ===== BẮT ĐẦU: DangNhap_03_problem_user =====
+[23:15:42] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:43] [INFO]  XONG: OK
+[23:15:43] [INFO]  ===== BẮT ĐẦU: DangNhap_04_trong =====
+[23:15:44] [INFO]  XONG: OK
+[23:15:44] [INFO]  ===== BẮT ĐẦU: DangNhap_NhieuTaiKhoan("problem_user","secret_sauce",True) =====
+[23:15:45] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:45] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:46] [INFO]  XONG: OK
+[23:15:46] [INFO]  ===== BẮT ĐẦU: DangNhap_NhieuTaiKhoan("khong_ton_tai","sai_mat_khau",True) =====
+[23:15:47] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:49] [INFO]  XONG: OK
+[23:15:49] [INFO]  ===== BẮT ĐẦU: DangNhap_05_standard_user =====
+[23:15:50] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:51] [ERROR] RỚT: DangNhap_NhieuTaiKhoan("khong_ton_tai","sai_mat_khau",True)
+Ảnh lỗi: /Users/venom/projects/teaching/net/FirstTests/bin/Debug/net10.0/screenshots/DangNhap_NhieuTaiKhoan("khong_ton_tai","sai_mat_khau",True)_231551.png
+[23:15:51] [INFO]  ===== BẮT ĐẦU: DangNhap_TaiKhoanBiKhoa_HienLoi =====
+[23:15:53] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:54] [INFO]  XONG: OK
+[23:15:54] [INFO]  XONG: OK
+[23:15:54] [INFO]  ===== BẮT ĐẦU: DangNhap_06_khong_ton_tai =====
+[23:15:55] [INFO]  Mở chrome, tới https://www.saucedemo.com/
+[23:15:59] [INFO]  XONG: OK
+NUnit Adapter 5.0.0.0: Test execution complete
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

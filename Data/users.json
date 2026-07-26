@@ -1,0 +1,38 @@
+[
+  {
+    "Username": "standard_user",
+    "Password": "secret_sauce",
+    "ThanhCong": true,
+    "GhiChu": "Tài khoản chuẩn — luồng thuận"
+  },
+  {
+    "Username": "locked_out_user",
+    "Password": "secret_sauce",
+    "ThanhCong": false,
+    "GhiChu": "Tài khoản bị khóa — phải hiện thông báo lỗi"
+  },
+  {
+    "Username": "problem_user",
+    "Password": "secret_sauce",
+    "ThanhCong": true,
+    "GhiChu": "Vào được nhưng ảnh sản phẩm hỏng"
+  },
+  {
+    "Username": "",
+    "Password": "secret_sauce",
+    "ThanhCong": false,
+    "GhiChu": "Ca biên: bỏ trống tài khoản"
+  },
+  {
+    "Username": "standard_user",
+    "Password": "",
+    "ThanhCong": false,
+    "GhiChu": "Ca biên: bỏ trống mật khẩu"
+  },
+  {
+    "Username": "khong_ton_tai",
+    "Password": "sai_mat_khau",
+    "ThanhCong": false,
+    "GhiChu": "Ca biên: tài khoản không tồn tại"
+  }
+]

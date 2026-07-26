@@ -1,0 +1,50 @@
+[
+  {
+    "TenCa": "CaThuong_HopLe",
+    "Ten": "John",
+    "Ho": "Doe",
+    "MaBuuChinh": "10000",
+    "MongDoiThanhCong": true,
+    "ThongBaoLoi": ""
+  },
+  {
+    "TenCa": "CaLoi_DeTrongTatCa",
+    "Ten": "",
+    "Ho": "",
+    "MaBuuChinh": "",
+    "MongDoiThanhCong": false,
+    "ThongBaoLoi": "Error: First Name is required"
+  },
+  {
+    "TenCa": "CaLoi_DeTrongHo",
+    "Ten": "John",
+    "Ho": "",
+    "MaBuuChinh": "10000",
+    "MongDoiThanhCong": false,
+    "ThongBaoLoi": "Error: Last Name is required"
+  },
+  {
+    "TenCa": "CaLoi_DeTrongMaBuuChinh",
+    "Ten": "John",
+    "Ho": "Doe",
+    "MaBuuChinh": "",
+    "MongDoiThanhCong": false,
+    "ThongBaoLoi": "Error: Postal Code is required"
+  },
+  {
+    "TenCa": "CaBien_DoDai1KyTu",
+    "Ten": "A",
+    "Ho": "B",
+    "MaBuuChinh": "1",
+    "MongDoiThanhCong": true,
+    "ThongBaoLoi": ""
+  },
+  {
+    "TenCa": "CaBien_KyTuDacBietVaTiengViet",
+    "Ten": "Nguyễn @#$",
+    "Ho": "Văn A %^&",
+    "MaBuuChinh": "70000!",
+    "MongDoiThanhCong": true,
+    "ThongBaoLoi": ""
+  }
+]
