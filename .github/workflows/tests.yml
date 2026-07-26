@@ -14,3 +14,12 @@ jobs:
           dotnet-version: '8.0.x'
       - run: dotnet restore
       - run: dotnet test --logger "trx" --results-directory ./ketqua
+        env:
+          Headless: 'true'
+      - uses: actions/upload-artifact@v4
+        if: always() # ← chạy cả khi test RỚT (quan trọng)
+        with:
+          name: ket-qua-test
+          path: |
+            ./ketqua
+            **/bin/Debug/net10.0/screenshots/**
