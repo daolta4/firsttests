@@ -16,55 +16,35 @@ public class CheckoutPage : BasePage
 
     public CheckoutPage(IWebDriver d) : base(d) { }
 
+    /// <summary>Bấm Checkout. Hiệu ứng: form nhập thông tin đã hiện.</summary>
     public CheckoutPage BatDau()
     {
-        Tim(nutCheckout).Click();
+        ClickChoDenKhi(nutCheckout, d => d.FindElements(oTen).Count > 0);
         return this;
     }
 
     public CheckoutPage NhapThongTin(string ten, string ho, string maBuuChinh)
     {
-        // var o1 = Tim(oTen);
-        // var o2 = Tim(oHo);
-        // var o3 = Tim(oMaBuuChinh);
+        if (!string.IsNullOrEmpty(ten))         NhapChu(oTen, ten);
+        if (!string.IsNullOrEmpty(ho))          NhapChu(oHo, ho);
+        if (!string.IsNullOrEmpty(maBuuChinh))  NhapChu(oMaBuuChinh, maBuuChinh);
 
-        // Tim(nutContinue).Click();
-        // if(!string.IsNullOrEmpty(ten)) o1.SendKeys(ten);
-        // if(!string.IsNullOrEmpty(ho)) o1.SendKeys(ho);
-        // if(!string.IsNullOrEmpty(maBuuChinh)) o1.SendKeys(maBuuChinh);
-        
-        // return this;
-
-        if (!string.IsNullOrEmpty(ten))
-        {
-            var o1 = Tim(oTen);
-            o1.Clear();
-            o1.SendKeys(ten);
-        }
-
-        if (!string.IsNullOrEmpty(ho))
-        {
-            var o2 = Tim(oHo);
-            o2.Clear();
-            o2.SendKeys(ho);
-        }
-
-        if (!string.IsNullOrEmpty(maBuuChinh))
-        {
-            var o3 = Tim(oMaBuuChinh);
-            o3.Clear();
-            o3.SendKeys(maBuuChinh);
-        }
-
-        Tim(nutContinue).Click();
+        // Bấm Continue. Hiệu ứng hợp lệ có HAI khả năng:
+        //  - sang bước tổng kết (nút Finish hiện), hoặc
+        //  - ở lại và báo lỗi thiếu trường.
+        // Ca nghịch cũng là KẾT QUẢ, không phải sự cố -> phải nằm trong điều kiện chờ.
+        ClickChoDenKhi(nutContinue,
+                       d => d.FindElements(nutFinish).Count > 0 || d.FindElements(loi).Count > 0);
         return this;
     }
 
     public string LayThongBaoLoi() => Tim(loi).Text;
 
+    /// <summary>Bấm Finish. Hiệu ứng: đã sang trang hoàn tất.</summary>
     public string HoanTatVaLayTieuDe()
     {
-        Tim(nutFinish).Click();
+        ClickChoDenKhi(nutFinish,
+                       d => d.Url.Contains("checkout-complete", StringComparison.OrdinalIgnoreCase));
         return Tim(tieuDeXacNhan).Text;
     }
 }

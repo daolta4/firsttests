@@ -10,6 +10,11 @@ public class InventoryPage : BasePage
     private readonly By sanPham = By.ClassName("inventory_item");
     private readonly By gia     = By.ClassName("inventory_item_price");
     private readonly By combo   = By.ClassName("product_sort_container");
+    private readonly By lienKetGio = By.ClassName("shopping_cart_link");
+
+    // Nút "Add to cart" / "Remove" của MỘT sản phẩm — id do saucedemo sinh theo mã SP.
+    private static By NutThem(string maSanPham) => By.Id($"add-to-cart-{maSanPham}");
+    private static By NutBo  (string maSanPham) => By.Id($"remove-{maSanPham}");
 
     public InventoryPage(IWebDriver d) : base(d) { }
 
@@ -32,6 +37,26 @@ public class InventoryPage : BasePage
     }
 
     public int SoSanPham() => driver.FindElements(sanPham).Count;
+
+    /// <summary>
+    /// Thêm 1 sản phẩm vào giỏ. Hiệu ứng chứng minh click đã ăn: nút đổi thành "Remove".
+    /// </summary>
+    public InventoryPage ThemVaoGio(string maSanPham)
+    {
+        ClickChoDenKhi(NutThem(maSanPham), d => d.FindElements(NutBo(maSanPham)).Count > 0);
+        return this;            // vẫn ở trang này -> trả về chính nó
+    }
+
+    /// <summary>
+    /// Mở giỏ hàng. Hiệu ứng chứng minh click đã ăn: URL đã sang trang giỏ.
+    /// KHÔNG được chỉ click rồi đi tiếp — trên CI cú click này hay bị rơi,
+    /// test đứng lại ở trang Products và chờ vô vọng nút #checkout.
+    /// </summary>
+    public CheckoutPage MoGioHang()
+    {
+        ClickChoDenKhi(lienKetGio, d => d.Url.Contains("cart", StringComparison.OrdinalIgnoreCase));
+        return new CheckoutPage(driver);     // trả về TRANG TIẾP THEO
+    }
 
     public InventoryPage SapXep(string value)
     {

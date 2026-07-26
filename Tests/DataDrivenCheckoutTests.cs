@@ -27,16 +27,15 @@ public class DataDrivenCheckoutTests : BaseTest
     public void ThanhToan_TuFileJson(CheckoutCase caTest)
     {
         // 1. Đăng nhập với tài khoản standard_user
-        new LoginPage(driver).DangNhap("standard_user", "secret_sauce");
+        var trangSanPham = new LoginPage(driver).DangNhap("standard_user", "secret_sauce");
 
-        // 2. Thêm sản phẩm sauce-labs-backpack vào giỏ hàng
-        driver.FindElement(By.Id("add-to-cart-sauce-labs-backpack")).Click();
-
-        // 3. Mở giỏ hàng
-        driver.FindElement(By.ClassName("shopping_cart_link")).Click();
+        // 2+3. Thêm sản phẩm vào giỏ rồi mở giỏ hàng.
+        // KHÔNG dùng driver.FindElement(...).Click() thẳng trong file test: không chờ,
+        // không kiểm tra cú click có ăn hay không -> đây chính là lỗi đỏ trên CI.
+        var checkoutPage = trangSanPham.ThemVaoGio("sauce-labs-backpack")
+                                       .MoGioHang();
 
         // 4. Bắt đầu checkout và nhập thông tin từ file JSON
-        var checkoutPage = new CheckoutPage(driver);
         checkoutPage.BatDau()
                     .NhapThongTin(caTest.Ten, caTest.Ho, caTest.MaBuuChinh);
 
