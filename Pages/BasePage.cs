@@ -54,9 +54,23 @@ public abstract class BasePage
     {
         for (var lan = 1; lan <= soLanThu; lan++)
         {
+            // Lần cuối mới hạ xuống click bằng JS. Ưu tiên click THẬT để test vẫn
+            // mô phỏng đúng người dùng; JS chỉ là phao cứu sinh cho môi trường lỗi.
+            var dungJs = lan == soLanThu;
+
             try
             {
-                TimCoTheClick(by).Click();
+                var e = TimCoTheClick(by);
+                if (dungJs)
+                {
+                    TestContext.Out.WriteLine(
+                        $"[CANH BAO] Click thật vào {by} không ăn -> chuyển sang click bằng JS.");
+                    ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].click();", e);
+                }
+                else
+                {
+                    e.Click();
+                }
             }
             catch (StaleElementReferenceException)
             {
@@ -97,8 +111,19 @@ public abstract class BasePage
             try
             {
                 var o = TimCoTheClick(by);
-                o.Clear();
-                o.SendKeys(chu);
+
+                if (lan == soLanThu)
+                {
+                    TestContext.Out.WriteLine(
+                        $"[CANH BAO] Gõ thật vào {by} không ăn -> chuyển sang gán bằng JS.");
+                    ((IJavaScriptExecutor)driver).ExecuteScript(JsGanGiaTriKieuReact, o, chu);
+                }
+                else
+                {
+                    o.Clear();
+                    o.SendKeys(chu);
+                }
+
                 if (o.GetDomProperty("value") == chu) return;
             }
             catch (StaleElementReferenceException)
@@ -109,4 +134,17 @@ public abstract class BasePage
 
         throw new WebDriverException($"Không nhập được '{chu}' vào {by} sau {soLanThu} lần thử.");
     }
+
+    /// <summary>
+    /// Gán giá trị cho ô input của React. KHÔNG thể gán thẳng element.value: React giữ
+    /// state riêng nên sẽ ghi đè lại. Phải gọi setter gốc rồi tự bắn sự kiện input/change
+    /// để React biết mà cập nhật state.
+    /// </summary>
+    private const string JsGanGiaTriKieuReact = """
+        var o = arguments[0], v = arguments[1];
+        var setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
+        setter.call(o, v);
+        o.dispatchEvent(new Event('input',  { bubbles: true }));
+        o.dispatchEvent(new Event('change', { bubbles: true }));
+        """;
 }
