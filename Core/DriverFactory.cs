@@ -20,7 +20,12 @@ public static class DriverFactory
 
     private static ChromeOptions ChromeOpts(TestConfig cfg)
     {
-        var o = new ChromeOptions();
+		var o = new ChromeOptions();
+		o.AddArgument("--headless=new");        // chạy ẩn (bắt buộc trên CI)
+		o.AddArgument("--window-size=1920,1080"); // ← DÒNG QUAN TRỌNG NHẤT
+		o.AddArgument("--no-sandbox");
+		o.AddArgument("--disable-dev-shm-usage");
+		var driver = new ChromeDriver(o);
         if (cfg.Headless) o.AddArgument("--headless=new");   // Chrome: có "=new"
         o.AddArgument($"--window-size={cfg.WindowWidth},{cfg.WindowHeight}");
         o.AddArgument("--disable-notifications");
