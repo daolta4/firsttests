@@ -12,9 +12,15 @@ public abstract class BasePage
     protected BasePage(IWebDriver driver)
     {
         this.driver = driver;
-        // Timeout lấy từ config, không viết cứng số 10 như Bài 4
+        // Timeout lấy từ config (đã nâng lên 30s cho môi trường CI chậm)
         wait = new WebDriverWait(driver,
                    TimeSpan.FromSeconds(ConfigReader.Load().TimeoutSeconds));
+
+        // QUAN TRỌNG: trong lúc chờ, BỎ QUA NoSuchElement.
+        // Nếu không, wait.Until sẽ văng ngay ở lần tìm đầu tiên (khi phần tử
+        // chưa kịp render) thay vì chờ đủ thời gian — đây là nguyên nhân test
+        // "trên máy thì xanh, trên CI thì đỏ".
+        wait.IgnoreExceptionTypes(typeof(NoSuchElementException));
     }
 
     /// <summary>Tìm phần tử KÈM chờ. Mọi Page class dùng chung.</summary>
