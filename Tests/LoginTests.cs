@@ -30,6 +30,7 @@ public class LoginTests : BaseTest      // <- không còn [SetUp]/[TearDown]/new
     [TestCase("problem_user",    "secret_sauce", true)]
     [TestCase("khong_ton_tai",   "sai_mat_khau", true)]
 
+    // demo tao nhanh moi truoc khi thuc hien task moi
     public void DangNhap_NhieuTaiKhoan(string tk, string mk, bool mongDoiThanhCong)
     {
         var trangSP = new LoginPage(driver).DangNhap(tk, mk);
