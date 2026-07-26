@@ -29,7 +29,8 @@ public class LoginTests : BaseTest      // <- không còn [SetUp]/[TearDown]/new
     [TestCase("locked_out_user", "secret_sauce", false)]
     [TestCase("problem_user",    "secret_sauce", true)]
     [TestCase("khong_ton_tai",   "sai_mat_khau", true)]
-
+    
+    // demo conflict
     public void DangNhap_NhieuTaiKhoan(string tk, string mk, bool mongDoiThanhCong)
     {
         var trangSP = new LoginPage(driver).DangNhap(tk, mk);
