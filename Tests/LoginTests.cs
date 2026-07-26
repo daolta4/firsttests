@@ -28,7 +28,7 @@ public class LoginTests : BaseTest      // <- không còn [SetUp]/[TearDown]/new
     [TestCase("standard_user",   "secret_sauce", true)]
     [TestCase("locked_out_user", "secret_sauce", false)]
     [TestCase("problem_user",    "secret_sauce", true)]
-    [TestCase("khong_ton_tai",   "sai_mat_khau", true)]
+    [TestCase("khong_ton_tai",   "sai_mat_khau", false)]
     
     // demo conflict
     // demo tao nhanh moi truoc khi thuc hien task moi
