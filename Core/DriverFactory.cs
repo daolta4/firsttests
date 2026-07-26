@@ -31,6 +31,7 @@ public static class DriverFactory
 			o.AddArgument("--disable-dev-shm-usage");
 		}
         o.AddArgument("--disable-notifications");
+        o.SetLoggingPreference(LogType.Browser, LogLevel.All);   // TẠM: để đọc lỗi JS trên CI
         return o;
     }
 
