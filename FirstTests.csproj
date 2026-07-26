@@ -29,12 +29,8 @@
     <None Update="Config/appsettings.*.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data/users.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Data/checkout_cases.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+  <None Update="Data\users.json" CopyToOutputDirectory="PreserveNewest" />
+  <None Update="Config\appsettings.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
