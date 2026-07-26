@@ -29,13 +29,13 @@ public class ChanDoanTests : BaseTest
     {
         var js = (IJavaScriptExecutor)driver;
         var els = driver.FindElements(by);
-        TestContext.Progress.WriteLine($"[SOI] {nhan}: tim thay {els.Count} phan tu");
+        TestContext.Out.WriteLine($"[SOI] {nhan}: tim thay {els.Count} phan tu");
         if (els.Count == 0) return;
 
         var e = els[0];
-        TestContext.Progress.WriteLine($"[SOI] {nhan}: displayed={e.Displayed} enabled={e.Enabled}");
-        TestContext.Progress.WriteLine($"[SOI] {nhan}: html={e.GetAttribute("outerHTML")}");
-        TestContext.Progress.WriteLine($"[SOI] {nhan}: {js.ExecuteScript(JsSoiDiemClick, e)}");
+        TestContext.Out.WriteLine($"[SOI] {nhan}: displayed={e.Displayed} enabled={e.Enabled}");
+        TestContext.Out.WriteLine($"[SOI] {nhan}: html={e.GetAttribute("outerHTML")}");
+        TestContext.Out.WriteLine($"[SOI] {nhan}: {js.ExecuteScript(JsSoiDiemClick, e)}");
     }
 
     [Test]
@@ -47,9 +47,9 @@ public class ChanDoanTests : BaseTest
         new LoginPage(driver).DangNhap("standard_user", "secret_sauce");
         new InventoryPage(driver).DaHienThi();
 
-        TestContext.Progress.WriteLine($"[SOI] url={driver.Url}");
-        TestContext.Progress.WriteLine($"[SOI] readyState={js.ExecuteScript("return document.readyState")}");
-        TestContext.Progress.WriteLine($"[SOI] userAgent={js.ExecuteScript("return navigator.userAgent")}");
+        TestContext.Out.WriteLine($"[SOI] url={driver.Url}");
+        TestContext.Out.WriteLine($"[SOI] readyState={js.ExecuteScript("return document.readyState")}");
+        TestContext.Out.WriteLine($"[SOI] userAgent={js.ExecuteScript("return navigator.userAgent")}");
 
         var nutThem = By.Id("add-to-cart-sauce-labs-backpack");
         var nutBo   = By.Id("remove-sauce-labs-backpack");
@@ -61,13 +61,13 @@ public class ChanDoanTests : BaseTest
         driver.FindElement(nutThem).Click();
         Thread.Sleep(3000);
         var themOk = driver.FindElements(nutBo).Count > 0;
-        TestContext.Progress.WriteLine($"[SOI] click THUONG vao nutThem -> an? {themOk}");
+        TestContext.Out.WriteLine($"[SOI] click THUONG vao nutThem -> an? {themOk}");
 
         if (!themOk)
         {
             js.ExecuteScript("arguments[0].click();", driver.FindElement(nutThem));
             Thread.Sleep(3000);
-            TestContext.Progress.WriteLine(
+            TestContext.Out.WriteLine(
                 $"[SOI] click JS vao nutThem -> an? {driver.FindElements(nutBo).Count > 0}");
         }
 
@@ -76,21 +76,21 @@ public class ChanDoanTests : BaseTest
 
         driver.FindElement(gio).Click();
         Thread.Sleep(3000);
-        TestContext.Progress.WriteLine($"[SOI] click THUONG vao gio -> url={driver.Url}");
+        TestContext.Out.WriteLine($"[SOI] click THUONG vao gio -> url={driver.Url}");
 
         if (!driver.Url.Contains("cart"))
         {
             js.ExecuteScript("arguments[0].click();", driver.FindElement(gio));
             Thread.Sleep(3000);
-            TestContext.Progress.WriteLine($"[SOI] click JS vao gio -> url={driver.Url}");
+            TestContext.Out.WriteLine($"[SOI] click JS vao gio -> url={driver.Url}");
         }
 
         if (!driver.Url.Contains("cart"))
         {
             js.ExecuteScript("window.location.href='/cart.html';");
             Thread.Sleep(3000);
-            TestContext.Progress.WriteLine($"[SOI] ep chuyen url -> url={driver.Url}");
-            TestContext.Progress.WriteLine(
+            TestContext.Out.WriteLine($"[SOI] ep chuyen url -> url={driver.Url}");
+            TestContext.Out.WriteLine(
                 $"[SOI] o trang cart co #checkout? {driver.FindElements(By.Id("checkout")).Count}");
         }
 
@@ -98,11 +98,11 @@ public class ChanDoanTests : BaseTest
         try
         {
             foreach (var l in driver.Manage().Logs.GetLog(LogType.Browser))
-                TestContext.Progress.WriteLine($"[SOI][console] {l.Level} {l.Message}");
+                TestContext.Out.WriteLine($"[SOI][console] {l.Level} {l.Message}");
         }
         catch (Exception ex)
         {
-            TestContext.Progress.WriteLine($"[SOI] khong doc duoc console log: {ex.Message}");
+            TestContext.Out.WriteLine($"[SOI] khong doc duoc console log: {ex.Message}");
         }
 
         Assert.Pass("Chi de soi, khong assert gi.");
