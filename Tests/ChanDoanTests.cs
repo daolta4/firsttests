@@ -1,110 +1,64 @@
 using FirstTests.Core;
 using FirstTests.Pages;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace FirstTests.Tests;
 
 /// <summary>
-/// TẠM THỜI — chỉ để soi xem trên CI cú click "rơi" ở đâu. Xoá sau khi tìm ra nguyên nhân.
+/// TẠM THỜI — so sánh các cách click xem cách nào thực sự ăn trên CI. Xoá sau khi chốt.
 /// </summary>
 public class ChanDoanTests : BaseTest
 {
-    private const string JsSoiDiemClick = """
-        var e = arguments[0];
-        e.scrollIntoView({block:'center'});
-        var r = e.getBoundingClientRect();
-        var cx = r.left + r.width/2, cy = r.top + r.height/2;
-        var t = document.elementFromPoint(cx, cy);
-        return JSON.stringify({
-          viewport: [window.innerWidth, window.innerHeight],
-          scroll:   [window.scrollX, window.scrollY],
-          rect:     [Math.round(r.left), Math.round(r.top), Math.round(r.width), Math.round(r.height)],
-          diem:     [Math.round(cx), Math.round(cy)],
-          phanTuTaiDiem: t ? (t.tagName + '#' + t.id + '.' + t.className) : null,
-          dungPhanTu:    t ? (t === e || e.contains(t) || t.contains(e)) : false
-        });
-        """;
+    private static void Ghi(string s) => TestContext.Out.WriteLine($"[SOI] {s}");
 
-    private void Soi(string nhan, By by)
+    private void VeTrangSanPham()
     {
-        var js = (IJavaScriptExecutor)driver;
-        var els = driver.FindElements(by);
-        TestContext.Out.WriteLine($"[SOI] {nhan}: tim thay {els.Count} phan tu");
-        if (els.Count == 0) return;
+        driver.Navigate().GoToUrl("https://www.saucedemo.com/inventory.html");
+        new InventoryPage(driver).DaHienThi();
+    }
 
-        var e = els[0];
-        TestContext.Out.WriteLine($"[SOI] {nhan}: displayed={e.Displayed} enabled={e.Enabled}");
-        TestContext.Out.WriteLine($"[SOI] {nhan}: html={e.GetAttribute("outerHTML")}");
-        TestContext.Out.WriteLine($"[SOI] {nhan}: {js.ExecuteScript(JsSoiDiemClick, e)}");
+    /// <summary>Thử 1 cách click vào giỏ hàng, trả về true nếu URL đã sang trang giỏ.</summary>
+    private bool ThuClickGio(string ten, Action<IWebElement> cachClick)
+    {
+        VeTrangSanPham();
+        var gio = driver.FindElement(By.ClassName("shopping_cart_link"));
+
+        try   { cachClick(gio); }
+        catch (Exception ex) { Ghi($"{ten}: NEM {ex.GetType().Name}: {ex.Message.Split('\n')[0]}"); return false; }
+
+        Thread.Sleep(2500);
+        var ok = driver.Url.Contains("cart");
+        Ghi($"{ten}: {(ok ? "AN" : "ROI")}  (url={driver.Url})");
+        return ok;
     }
 
     [Test]
     [Category("ChanDoan")]
-    public void Soi_Vi_Sao_Click_Bi_Roi()
+    public void So_Sanh_Cac_Cach_Click()
     {
         var js = (IJavaScriptExecutor)driver;
 
         new LoginPage(driver).DangNhap("standard_user", "secret_sauce");
         new InventoryPage(driver).DaHienThi();
+        Ghi($"userAgent={js.ExecuteScript("return navigator.userAgent")}");
+        Ghi($"devicePixelRatio={js.ExecuteScript("return window.devicePixelRatio")}");
+        Ghi($"hasFocus={js.ExecuteScript("return document.hasFocus()")}");
 
-        TestContext.Out.WriteLine($"[SOI] url={driver.Url}");
-        TestContext.Out.WriteLine($"[SOI] readyState={js.ExecuteScript("return document.readyState")}");
-        TestContext.Out.WriteLine($"[SOI] userAgent={js.ExecuteScript("return navigator.userAgent")}");
+        ThuClickGio("1-Click thuong", e => e.Click());
 
-        var nutThem = By.Id("add-to-cart-sauce-labs-backpack");
-        var nutBo   = By.Id("remove-sauce-labs-backpack");
-        var gio     = By.ClassName("shopping_cart_link");
-
-        // ---- Bước 1: THÊM VÀO GIỎ ----
-        Soi("nutThem", nutThem);
-
-        driver.FindElement(nutThem).Click();
-        Thread.Sleep(3000);
-        var themOk = driver.FindElements(nutBo).Count > 0;
-        TestContext.Out.WriteLine($"[SOI] click THUONG vao nutThem -> an? {themOk}");
-
-        if (!themOk)
+        ThuClickGio("2-Scroll roi click", e =>
         {
-            js.ExecuteScript("arguments[0].click();", driver.FindElement(nutThem));
-            Thread.Sleep(3000);
-            TestContext.Out.WriteLine(
-                $"[SOI] click JS vao nutThem -> an? {driver.FindElements(nutBo).Count > 0}");
-        }
+            js.ExecuteScript("arguments[0].scrollIntoView({block:'center'});", e);
+            Thread.Sleep(300);
+            e.Click();
+        });
 
-        // ---- Bước 2: MỞ GIỎ ----
-        Soi("gio", gio);
+        ThuClickGio("3-Actions MoveToElement", e =>
+            new Actions(driver).MoveToElement(e).Pause(TimeSpan.FromMilliseconds(200)).Click().Perform());
 
-        driver.FindElement(gio).Click();
-        Thread.Sleep(3000);
-        TestContext.Out.WriteLine($"[SOI] click THUONG vao gio -> url={driver.Url}");
+        ThuClickGio("4-Click JS", e => js.ExecuteScript("arguments[0].click();", e));
 
-        if (!driver.Url.Contains("cart"))
-        {
-            js.ExecuteScript("arguments[0].click();", driver.FindElement(gio));
-            Thread.Sleep(3000);
-            TestContext.Out.WriteLine($"[SOI] click JS vao gio -> url={driver.Url}");
-        }
-
-        if (!driver.Url.Contains("cart"))
-        {
-            js.ExecuteScript("window.location.href='/cart.html';");
-            Thread.Sleep(3000);
-            TestContext.Out.WriteLine($"[SOI] ep chuyen url -> url={driver.Url}");
-            TestContext.Out.WriteLine(
-                $"[SOI] o trang cart co #checkout? {driver.FindElements(By.Id("checkout")).Count}");
-        }
-
-        // ---- Log lỗi JS của trình duyệt (nếu bundle React chết thì lộ ra ở đây) ----
-        try
-        {
-            foreach (var l in driver.Manage().Logs.GetLog(LogType.Browser))
-                TestContext.Out.WriteLine($"[SOI][console] {l.Level} {l.Message}");
-        }
-        catch (Exception ex)
-        {
-            TestContext.Out.WriteLine($"[SOI] khong doc duoc console log: {ex.Message}");
-        }
-
-        Assert.Pass("Chi de soi, khong assert gi.");
+        Assert.Pass("Chi de soi.");
     }
 }
