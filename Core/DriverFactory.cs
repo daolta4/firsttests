@@ -30,15 +30,8 @@ public static class DriverFactory
 			o.AddArgument("--no-sandbox");
 			o.AddArgument("--disable-dev-shm-usage");
 			o.AddArgument("--disable-gpu");
-
-			// Chay nhieu Chrome song song tren runner: cua so bi coi la "bi che khuat"
-			// -> Chrome ha muc uu tien renderer, su kien chuot that co the bi bo qua.
-			o.AddArgument("--disable-backgrounding-occluded-windows");
-			o.AddArgument("--disable-renderer-backgrounding");
-			o.AddArgument("--disable-background-timer-throttling");
 		}
         o.AddArgument("--disable-notifications");
-        o.SetLoggingPreference(LogType.Browser, LogLevel.All);   // TẠM: để đọc lỗi JS trên CI
         return o;
     }
 
